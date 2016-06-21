@@ -17,6 +17,19 @@
     <script src="js/code.photoswipe-3.0.4.min.ap.js"></script>
     <script src="js/flickr-gallery-ps.js"></script>
     <script type="text/javascript">
+    //var f = new FlickrPhotswipe("f795862b714e60d59e6b4585f902e563", "72157602886285966", "fxpurcell");
+    var f = new FlickrPhotswipe("f795862b714e60d59e6b4585f902e563", "72157602886285966", "fxpurcell");
+    </script>
+</head>    
+<body>
+    <div id="photoheader">
+        <a href="/">Frank O</a>
+    </div>
+    <div style="position:relative; margin:0 auto;">
+        <script>f.callFlickr();</script>
+    </div>
+</body>
+<script type="text/javascript">
     window.onload = function() {
           setTimeout(function(){window.scrollTo(0, 2);}, 100);
     }
@@ -26,18 +39,5 @@
             instance = PhotoSwipe.attach( window.document.querySelectorAll('#Gallery a'), {minUserZoom: 1 } );
           }, false);
     }(window, window.Code.PhotoSwipe));
-    </script>
-</head>    
-<body>
-  <div id="photoheader">
-    <a href="/">Frank O</a>
-    <div class="little"><a href="http://www.flickr.com/photos/ajayp">See many more photos at flickr</a></div>
-    </div>
-  <div style="position:relative; margin:0 auto;">
-      <script>
-        var f = new FlickrPhotswipe("f795862b714e60d59e6b4585f902e563", "72157602886285966", "fxpurcell");
-        f.callFlickr();
-      </script>
-  </div>
-  </body>
+</script>
 </html>
