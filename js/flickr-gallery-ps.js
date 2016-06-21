@@ -1,31 +1,39 @@
 /**
  * create HTML from the flickr api for photoswipe.js
+ * NOTE: built using ES5 ... you might need https://github.com/es-shims/es5-shim to 
+ *       make me work with old browsers (e.g., IE8).
+ * @see https://kangax.github.io/compat-table/es6/
  */
-class FlickrPhotswipe
+class FlickrPhotoSwipe
 {
     constructor(apiKey, albumId, userId)
     {
         this.apiKey = apiKey;
         this.albumId = albumId;
         this.userId = userId;
-        FlickrPhotswipe.this_ = this;
+        FlickrPhotoSwipe.this_ = this; // singleton
     }
 
+    /** callback routine for jsonp call to the FlickrAPI */
+    static jsonFlickrApiCB(rsp)
+    {        
+        FlickrPhotoSwipe.this_.jsonFlickrApi(rsp); // this_ is the singleton object reference
+    }
+
+    /** 
+     * writes a script tag into your html to then pull an album from Flickr
+     * NOTE: the jsonp callback in our request matches our static cb method above...
+     */
     callFlickr()
     {
         var url = "<script type='text/javascript' language='javascript'" +
                   "src='https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos" +
                   "&api_key=" + this.apiKey +
                   "&photoset_id=" + this.albumId +
-                  "&jsoncallback=FlickrPhotswipe.jsonFlickrApiCB" +
+                  "&jsoncallback=FlickrPhotoSwipe.jsonFlickrApiCB" +
                   "&format=json&extras=original_format'></script>";
         console.log(url);
-        document.writeln(url); 
-    }
-
-    static jsonFlickrApiCB(rsp)
-    {
-        FlickrPhotswipe.this_.jsonFlickrApi(rsp);
+        document.writeln(url);
     }
 
     /** 
@@ -39,11 +47,10 @@ class FlickrPhotswipe
      */
     jsonFlickrApi(rsp)
     {
-	// makes sure everything's ok with FlickrAPI ... else return a bit of content
+	// makes sure everything's ok with FlickrAPI ... else return a link back to 
 	if(rsp.stat != "ok")
 	{
-	    var err = "<div class='little'>Please go to <a href='http://www.flickr.com/" + this.userId + "'>flickr.com/" + this.userId + 
-                      "</a> to see more pictures.</div>";
+            var err = f.flickrLinkback("I'm having some trouble rendering my Flickr photos...just go there directly: ", " ");
 	    document.writeln(err); 
 	    return;
 	}
@@ -84,5 +91,22 @@ class FlickrPhotswipe
 
 	// write list of photos back to the html page
 	document.writeln(q); 
+    }
+
+    flickrUrl()
+    {
+        var url = " <a href='http://www.flickr.com/" + this.userId + "'> flickr.com/" + this.userId + "</a> ";
+        return url;
+    }
+
+    flickrLinkback(msgPartA, msgPartB, cls)
+    {
+        var visit = msgPartA || "Visit my";
+        var url   = this.flickrUrl();
+        var photo = msgPartB  || "page to see more photos.";
+        var cls  = cls || "little";
+
+        var msg = "<div class='" + cls + "'>" + visit + url + photo + "</div>";
+        return msg;
     }
 }

@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html>
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
@@ -17,13 +16,17 @@
     <script src="js/code.photoswipe-3.0.4.min.ap.js"></script>
     <script src="js/flickr-gallery-ps.js"></script>
     <script type="text/javascript">
-    //var f = new FlickrPhotswipe("f795862b714e60d59e6b4585f902e563", "72157602886285966", "fxpurcell");
-    var f = new FlickrPhotswipe("f795862b714e60d59e6b4585f902e563", "72157602886285966", "fxpurcell");
+        //var f = new FlickrPhotoSwipe("f795862b714e60d59e6b4585f902e563", "72157602886285966", "fpurcell");
+        var f = new FlickrPhotoSwipe("f795862b714e60d59e6b4585f902e563", "72157670059311695", "lightbox111");
     </script>
 </head>    
 <body>
     <div id="photoheader">
         <a href="/">Frank O</a>
+        <script>
+            var lb = f.flickrLinkback();
+            document.writeln(lb); 
+        </script>
     </div>
     <div style="position:relative; margin:0 auto;">
         <script>f.callFlickr();</script>
