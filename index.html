@@ -33,12 +33,11 @@
     <a href="/">Frank O</a>
     <div class="little"><a href="http://www.flickr.com/photos/ajayp">See many more photos at flickr</a></div>
     </div>
-  //   var flickrApiKey = f795862b714e60d59e6b4585f902e563
-  //   flickrPhotosetId = 72157602886285966
-  //     <script type="text/javascript" language="javascript" src="https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=&photoset_id=&format=json&extras=original_format"></script> 
- 
   <div style="position:relative; margin:0 auto;">
-    <script type="text/javascript" language="javascript" src="https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=f795862b714e60d59e6b4585f902e563&photoset_id=72157602886285966&format=json&extras=original_format"></script> 
-    </div>
+      <script>
+        var f = new FlickrPhotswipe("f795862b714e60d59e6b4585f902e563", "72157602886285966", "fxpurcell");
+        f.callFlickr();
+      </script>
+  </div>
   </body>
 </html>
