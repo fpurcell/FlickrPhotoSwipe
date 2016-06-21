@@ -12,6 +12,12 @@ class FlickrPhotoSwipe
         this.albumId = albumId;
         this.userId = userId;
         FlickrPhotoSwipe.this_ = this; // singleton
+
+        try {
+            Code.PhotoSwipe.home_href = "http://flickr.com/" + this.userId;
+        }catch(e) {
+	    console.log("tried setting Code.PhotoSwipe.home_href ... a 3.0.4 version of the code");
+        }
     }
 
     /** callback routine for jsonp call to the FlickrAPI */
