@@ -48,9 +48,9 @@ class FlickrPhotoSwipe
     jsonFlickrApi(rsp)
     {
 	// makes sure everything's ok with FlickrAPI ... else return a link back to 
-	if(rsp.stat != "ok")
+	if(rsp.stat == "ok")
 	{
-            var err = f.flickrLinkback("I'm having some trouble rendering my Flickr photos...just go there directly: ", " ");
+            var err = f.flickrLinkback(null, "I'm having trouble rendering my Flickr photos...please go there directly: ",  "error");
 	    document.writeln(err); 
 	    return;
 	}
@@ -93,20 +93,19 @@ class FlickrPhotoSwipe
 	document.writeln(q); 
     }
 
-    flickrUrl()
+    flickrUrl(msg)
     {
-        var url = " <a href='http://www.flickr.com/" + this.userId + "'> flickr.com/" + this.userId + "</a> ";
+        var msg =  msg || "flickr.com/" + this.userId;
+        var url = " <a href='http://www.flickr.com/" + this.userId + "'>" + msg + "</a> ";
         return url;
     }
 
-    flickrLinkback(msgPartA, msgPartB, cls)
+    flickrLinkback(urlMsg, msg, cls)
     {
-        var visit = msgPartA || "Visit my";
-        var url   = this.flickrUrl();
-        var photo = msgPartB  || "page to see more photos.";
-        var cls  = cls || "little";
-
-        var msg = "<div class='" + cls + "'>" + visit + url + photo + "</div>";
-        return msg;
+        var url = this.flickrUrl(urlMsg);
+        var msg = msg || "";
+        var cls = cls || "little";
+        var lb = "<div class='" + cls + "'>" + msg + url + "</div>";
+        return lb;
     }
 }

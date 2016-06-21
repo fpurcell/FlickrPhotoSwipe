@@ -1,17 +1,19 @@
 <html>
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="apple-touch-startup-image" href="/images/snarglr-ipad.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2)" /> 
-
+    <link rel="apple-touch-startup-image" 
+          media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2)"
+          href="images/snarglr-ipad.png" 
+    />
+    <link href="images/snarglr.png" rel="apple-touch-icon-precomposed" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
 
     <!-- borrowed mostly from http://snarglr.com/pictures/ -->
     <title>Frank'o photos</title>
     <link href="css/photoswipestyles.css" type="text/css" rel="stylesheet" />
     <link href="css/photoswipe.css" type="text/css" rel="stylesheet" />
-    <link href="/snarglr.png" rel="apple-touch-icon-precomposed" />
     <script src="js/klass.min.js" type="text/javascript" ></script>
     <script src="js/code.photoswipe-3.0.4.min.ap.js"></script>
     <script src="js/flickr-photo-swipe.js"></script>
@@ -24,9 +26,11 @@
     <div id="photoheader">
         <a href="/">Frank O</a>
         <script>
-            var lb = f.flickrLinkback();
+            var lb = f.flickrLinkback("See more photos on my Flickr page", " ");
             document.writeln(lb); 
         </script>
+        <div class='little'>twitter: <a href="//twitter.com/jokeDonaldTrump">@jokeDonaldTrump</a></div>
+        <div class='little' <a href="tel:555-555-1212">cell: 555.555.1212</a></div>
     </div>
     <div style="position:relative; margin:0 auto;">
         <script>f.callFlickr();</script>
