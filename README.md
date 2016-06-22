@@ -1,5 +1,7 @@
 # FlickrPhotoSwipe
-Show Flickr images on a page rendered with the PhotoSwipe javascript library
+Show [Flickr](https://flickr.com/lightbox111) images on a page rendered with the [PhotoSwipe javascript library](http://photoswipe.com).
+
+Example: http://flickrps.frankpurcell.com
 
 Running:
  1. git clone https://github.com/fpurcell/FlickrPhotoSwipe.git
