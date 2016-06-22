@@ -16,6 +16,6 @@ Customizing:
  1. create a Flickr API id: https://www.flickr.com/services/api/
  1. cd FlickrPhotoSwipe
  1. edit file index.html
- 1. var f = new FlickrPhotoSwipe("\<your api id\>", "\<your album id\>", "\<your flickr user id\>");
+ 1. change (at least) this line: var f = new FlickrPhotoSwipe("\<your api id\>", "\<your album id\>", "\<your flickr user id\>");
  1. look like this? FlickrPhotoSwipe("f795862b714e60d59e6b4585f902e563", "72157670059311695", "lightbox111");
 
