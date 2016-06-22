@@ -21,3 +21,6 @@ Customizing:
  1. change (at least) this line: var f = new FlickrPhotoSwipe("\<your api id\>", "\<your album id\>", "\<your flickr user id\>");
  1. look like this? FlickrPhotoSwipe("f795862b714e60d59e6b4585f902e563", "72157670059311695", "lightbox111");
 
+NOTE:
+ this lib currently uses PhotoSwipe v3.0.3 (or v3.0.4?) https://docs.omniref.com/github/dimsemenov/PhotoSwipe/3.0.3
+ this is a pretty old version, and I hope to upgrade sometime...pull requests gladly accepted.
