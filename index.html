@@ -6,12 +6,12 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-capable" content="yes" />
 
-    <title>FlickrPhotoSwipe</title>
+    <title>Mr. FlickrPhotoSwipe</title>
 
     <!-- important note: this lib uses a very old version of photoswipe -->
-    <link  href="lib/css/photoswipe-3.0.4.css" type="text/css" rel="stylesheet" />
     <script src="lib/js/klass.min.js" type="text/javascript" ></script>
     <script src="lib/js/photoswipe-3.0.4.min.js"></script>
+    <link  href="lib/css/photoswipe-3.0.4.css" type="text/css" rel="stylesheet" />
 
     <link  href="css/flickr-photo-swipe.css" type="text/css" rel="stylesheet" />
     <script src="js/flickr-photo-swipe.js"></script>
@@ -27,22 +27,13 @@
             var lb = f.flickrLinkback("See more photos on my Flickr page", " ");
             document.writeln(lb); 
         </script>
-        <div class='little'>twitter: <a href="//twitter.com/jokeDonaldTrump">@jokeDonaldTrump</a></div>
-        <div class='little' <a href="tel:555-555-1212">cell: 555.555.1212</a></div>
+        <address>
+        <div class='little'>twitter: <a href='//twitter.com/jokeDonaldTrump' target='#'>@jokeDonaldTrump</a></div>
+        <div class='little'><a href='tel:555-555-1212'>cell: 555.555.1212</a></div>
+        </address>
     </div>
     <div style="position:relative; margin:0 auto;">
         <script>f.callFlickr();</script>
     </div>
 </body>
-<script type="text/javascript">
-    window.onload = function() {
-          setTimeout(function(){window.scrollTo(0, 2);}, 100);
-    }
-    (function(window, PhotoSwipe) {
-        document.addEventListener('DOMContentLoaded', function(){
-          var options = {},
-            instance = PhotoSwipe.attach( window.document.querySelectorAll('#Gallery a'), {minUserZoom: 1 } );
-          }, false);
-    }(window, window.Code.PhotoSwipe));
-</script>
 </html>

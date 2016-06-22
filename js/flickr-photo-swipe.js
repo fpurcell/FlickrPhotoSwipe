@@ -20,10 +20,20 @@ class FlickrPhotoSwipe
         }
     }
 
-    /** callback routine for jsonp call to the FlickrAPI */
-    static jsonFlickrApiCB(rsp)
-    {        
-        FlickrPhotoSwipe.this_.jsonFlickrApi(rsp); // this_ is the singleton object reference
+    flickrUrl(msg)
+    {
+        var msg =  msg || "flickr.com/" + this.userId;
+        var url = " <a href='http://www.flickr.com/" + this.userId + "' target='#'>" + msg + "</a> ";
+        return url;
+    }
+
+    flickrLinkback(urlMsg, msg, cls)
+    {
+        var url = this.flickrUrl(urlMsg);
+        var msg = msg || "";
+        var cls = cls || "little";
+        var lb = "<div class='" + cls + "'>" + msg + url + "</div>";
+        return lb;
     }
 
     /** 
@@ -36,10 +46,31 @@ class FlickrPhotoSwipe
                   "src='https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos" +
                   "&api_key=" + this.apiKey +
                   "&photoset_id=" + this.albumId +
-                  "&jsoncallback=FlickrPhotoSwipe.jsonFlickrApiCB" +
+                  "&jsoncallback=FlickrPhotoSwipe._jsonFlickrApiCB" +
                   "&format=json&extras=original_format'></script>";
         console.log(url);
         document.writeln(url);
+    }
+
+    /** callback routine for jsonp call to the FlickrAPI */
+    static _jsonFlickrApiCB(rsp)
+    {
+        // NOTE: this_ is the singleton object reference
+        FlickrPhotoSwipe.this_._jsonFlickrApi(rsp);
+        FlickrPhotoSwipe.this_._initPhotoSwipe(rsp); 
+    }
+
+    _initPhotoSwipe()
+    {
+	window.onload = function() {
+	      setTimeout(function(){window.scrollTo(0, 2);}, 100);
+	}
+	(function(window, PhotoSwipe) {
+	    document.addEventListener('DOMContentLoaded', function(){
+	      var options = {},
+		instance = PhotoSwipe.attach( window.document.querySelectorAll('#Gallery a'), {minUserZoom: 1 } );
+	      }, false);
+	}(window, window.Code.PhotoSwipe));
     }
 
     /** 
@@ -51,7 +82,7 @@ class FlickrPhotoSwipe
      * @see http://stackoverflow.com/questions/8201168/photoswipe-get-images-from-flickr-or-other-feed 
      * @see https://twitter.com/PhotoSwipe
      */
-    jsonFlickrApi(rsp)
+    _jsonFlickrApi(rsp)
     {
         // makes sure everything's ok with FlickrAPI ... else return a link back to 
         if(rsp.stat != "ok")
@@ -97,21 +128,5 @@ class FlickrPhotoSwipe
 
         // write list of photos back to the html page
         document.writeln(q); 
-    }
-
-    flickrUrl(msg)
-    {
-        var msg =  msg || "flickr.com/" + this.userId;
-        var url = " <a href='http://www.flickr.com/" + this.userId + "'>" + msg + "</a> ";
-        return url;
-    }
-
-    flickrLinkback(urlMsg, msg, cls)
-    {
-        var url = this.flickrUrl(urlMsg);
-        var msg = msg || "";
-        var cls = cls || "little";
-        var lb = "<div class='" + cls + "'>" + msg + url + "</div>";
-        return lb;
     }
 }

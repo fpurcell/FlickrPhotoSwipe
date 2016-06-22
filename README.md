@@ -10,7 +10,7 @@ Running:
 Customizing:
  1. create a https://www.flickr.com/ account, add some images, make those images public
  1. create a Flickr 'Album', and add some photos to it...
- 1  create a Flickr alias name
+ 1  create a Flickr alias name https://www.flickr.com/profile_url.gne
  1. when you open your album in a browser, note the album id at the end of the url, 
     ala https://www.flickr.com/photos/lightbox111/albums/72157670059311695
  1. create a Flickr API id: https://www.flickr.com/services/api/
